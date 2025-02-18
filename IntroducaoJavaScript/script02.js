@@ -26,3 +26,41 @@ switch (mes) {
         console.log("Outro Mes")
         break;
 }
+
+
+// Estruturas de Repetição
+
+//For (Casos contaveis)
+for(let i = 0; i<=100; i++){
+    console.log(i);
+}
+
+// While (Casos incontáveis)
+var continuar = true; //condição de parada
+//a parada acontece quando continuar for falso
+var numeroEscolhido = 3;
+var contador = 0;
+
+while(continuar){
+    contador++;
+    let numeroSorteado = Math.round(Math.random()*10);
+    if(numeroEscolhido == numeroSorteado){
+        continuar = false;
+        console.log("Acertou mizeravi");
+    }
+    console.log("Tentativas: "+contador);
+}
+
+
+//Funções (ação específica) podendo ser chamada a qualquer momento dentro do código
+function ola (nome){  //function return
+    return "Olá, "+nome;
+}
+
+function hello (nome){  //function void
+    console.log("Hello, "+nome);
+}
+
+console.log(ola("Pietro"));
+
+hello("Pietro");
