@@ -20,8 +20,6 @@ let produto2 = {
 
 // X
 
-
-
 // POO - classe de produtos
 
 class Produto {
@@ -47,7 +45,6 @@ class Produto {
 // instanciar um objeto
 let p1 = new Produto("Impressoras", 2000);
 let p2 = new Produto("Tablet", 1500);
-
 
 //examplos de uso de POO
 
@@ -115,3 +112,4 @@ let funcionario1 = new Funcionario("João", 25, "123.446.789-00", "Motorista", 3
 funcionario1.exibirInfo();
 funcionario1.setSalario = 3500;
 funcionario1.exibirInfo(); //exibir as informações atualizadas
+
