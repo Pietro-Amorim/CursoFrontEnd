@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manipulação do DOM - Exercícios Avançados</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Exercício 1: Capturando Eventos do Teclado -->
+    <section>
+      <h2>Capturando Eventos do Teclado</h2>
+      <input type="text" id="campoTeclado" placeholder="Pressione uma tecla">
+      <p id="teclaPressionada">Tecla pressionada: </p>
+    </section>
+
+    <!-- Exercício 2: Campo de Busca com Sugestões Dinâmicas -->
+    <section>
+      <h2>Campo de Busca com Sugestões Dinâmicas</h2>
+      <input type="text" id="campoBusca" placeholder="Digite para sugestões...">
+      <ul id="sugestoes"></ul>
+    </section>
+
+    <!-- Exercício 3: Validação de Formulário -->
+    <section>
+      <h2>Validação de Formulário</h2>
+      <form id="formulario">
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="email" id="email" placeholder="E-mail" required>
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="erroFormulario" style="color: red;"></p>
+    </section>
+
+    <!-- Exercício 4: Galeria de Imagens Dinâmica -->
+    <section>
+      <h2>Galeria de Imagens Dinâmica</h2>
+      <input type="file" id="inputImagem" multiple>
+      <div id="galeriaImagens"></div>
+    </section>
+
+    <!-- Exercício 5: Jogo de Quiz -->
+    <section>
+      <h2>Jogo de Quiz</h2>
+      <form id="quizForm">
+        <p>Qual é a capital do Brasil?</p>
+        <label>
+          <input type="radio" name="resposta" value="certo"> Brasília
+        </label>
+        <label>
+          <input type="radio" name="resposta" value="errado"> São Paulo
+        </label>
+        <label>
+          <input type="radio" name="resposta" value="errado"> Rio de Janeiro
+        </label>
+        <button type="submit">Verificar Resposta</button>
+      </form>
+      <p id="resultadoQuiz"></p>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* Resetando margens e paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 26px;
+  color: #4A90E2;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+input[type="text"], input[type="email"], input[type="file"], button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, button:focus {
+  border-color: #4A90E2;
+}
+
+input[type="file"] {
+  padding: 10px;
+}
+
+button {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #357ABD;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+li {
+  padding: 8px;
+  background-color: #e0e8f5;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #4A90E2;
+  color: white;
+}
+
+#galeriaImagens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#galeriaImagens img {
+  max-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  margin-top: 20px;
+}
+
+form p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#erroFormulario {
+  margin-top: 10px;
+  color: #e74c3c;
+  font-weight: bold;
+  text-align: center;
+}
+
+#resultadoQuiz {
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  input[type="text"], input[type="email"], input[type="file"], button {
+    font-size: 14px;
+  }
+
+  #galeriaImagens img {
+    max-width: 150px;
+  }
+}

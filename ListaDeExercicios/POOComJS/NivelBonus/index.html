@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercícios Bônus - OOP com DOM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🕒 Relógio -->
+  <section>
+    <h2>Relógio em Tempo Real</h2>
+    <div id="relogio"></div>
+  </section>
+
+
+
+  <!-- 🧾 Formulário com Validação -->
+  <section>
+    <h2>Formulário com Validação</h2>
+    <form id="formUsuario">
+      <input type="text" id="nome" placeholder="Nome" />
+      <input type="email" id="email" placeholder="E-mail" />
+      <input type="password" id="senha" placeholder="Senha" />
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="erros"></div>
+  </section>
+
+
+  
+  <!-- 🎯 Jogo de Adivinhação -->
+  <section>
+    <h2>Jogo de Adivinhação</h2>
+    <input type="number" id="palpite" placeholder="Digite um número entre 1 e 100" />
+    <button onclick="tentarPalpite()">Tentar</button>
+    <p id="resultado"></p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
