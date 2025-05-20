@@ -1,0 +1,34 @@
+<div class="card">
+    <h2>Formulário de conatato</h2>
+    <form action="">
+        <label for="">Nome:</label>
+        <input type="text" name="nome" id="" [(ngModel)]="nome">
+        <br>
+        <label for="">Email:</label>
+        <input type="email" name="nome" id="" [(ngModel)]="email">
+        <br>
+        <label for="">Telefone:</label>
+        <input type="text" name="nome" id="" [(ngModel)]="telefone">
+        <br>
+        <label for="">Idade:</label>
+        <input type="number" name="nome" id="" [(ngModel)]="idade">
+        <br>
+        <label for="">Profissão</label>
+        <input type="text" name="nome" id="" [(ngModel)]="profissao">
+    </form>
+    <div class="botoes">
+        <button (click)="limparDados()  ">Limpar</button>
+        <button (click)="enviarFormulario()">Enviar</button>
+    </div>
+    
+
+    <hr>
+    <h3>Visualização em tempo real</h3>
+    <div class="preview">
+        <p><strong>Nome:</strong> {{nome}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Telefone:</strong> {{telefone}}</p>
+        <p><strong>Idade:</strong> {{idade}}</p>
+        <p><strong>Profissão:</strong> {{profissao}}</p>
+    </div>
+</div>

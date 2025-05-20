@@ -1,7 +1,13 @@
 ## Curso FrontEnd
 
- - Revisão de Conteúdo
+ ✦ Revisão de Conteúdo
     - HTML
     - Css
     - Responsividade
     - MediaQuery
+
+ ## Framework (soluções completas para desenvolvimento)
+   ✦ Ângular: 
+      - Desenvolvido pela google;
+      - MVC;
+      - 

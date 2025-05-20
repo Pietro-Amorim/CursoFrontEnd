@@ -1,0 +1,54 @@
+/* contato.component.css */
+.card{
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 24px;
+    background-color: rgb(172, 44, 44);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Estilo básico para o formulário de contato */
+form {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #d15739;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.08);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+button {
+    background: #b94c1a;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    place-content: 0 10px;  
+    margin: 0 10px;
+}
+
+button:hover {
+    background: #ff4800;
+}
