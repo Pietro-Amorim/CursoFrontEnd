@@ -14,7 +14,7 @@ export class DadosService {
 
   constructor() { }
 
-  //métodos
+  //métodos do crud
   getClientes(): Cliente[]{  //método psrs lidtsr todos os clienes do vetor
     return this.clientes;
   }

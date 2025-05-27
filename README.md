@@ -10,4 +10,5 @@
    ✦ Ângular: 
       - Desenvolvido pela google;
       - MVC;
-      - 
+      - Faz modularizações no código;
+      - Principal linguagem: TypeScript;

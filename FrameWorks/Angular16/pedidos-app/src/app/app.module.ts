@@ -7,7 +7,8 @@ import { ClienteFormComponent } from './componentes/cliente-form/cliente-form.co
 import { ProdutoFormComponent } from './componentes/produto-form/produto-form.component';
 import { PedidoFormComponent } from './componentes/pedido-form/pedido-form.component';
 import { PedidoListComponent } from './componentes/pedido-list/pedido-list.component';
-import { DadosComponent } from './services/dados/dados.service';
+import { FormsModule } from '@angular/forms';
+import { DadosService } from './services/dados.service';
 
 @NgModule({
   declarations: [
@@ -15,14 +16,14 @@ import { DadosComponent } from './services/dados/dados.service';
     ClienteFormComponent,
     ProdutoFormComponent,
     PedidoFormComponent,
-    PedidoListComponent,
-    DadosComponent
+    PedidoListComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+imports: [
+  BrowserModule,
+  AppRoutingModule,
+  FormsModule
+],
+  providers: [DadosService], // Adicione DadosService ao array providers
   bootstrap: [AppComponent]
 })
 export class AppModule { }
