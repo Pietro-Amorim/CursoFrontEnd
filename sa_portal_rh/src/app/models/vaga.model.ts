@@ -66,4 +66,27 @@ export class Vaga{
     public set salario(value: number) {
         this._salario = value;
     }
+
+    // métodos de conversão de objetos
+
+    public toMap():{[key:string]:any}{
+      return{
+        id: this._id,
+        nome: this._nome,
+        foto: this._foto,
+        descricao: this._descricao,
+        salario: this._salario
+      }
+    }
+
+    static fromMap(map:any): Vaga{
+      return new Vaga(
+        map.id,
+        map.nome,
+        map.foto,
+        map.descricao,
+        map.salario
+      )
+    }
+    
 }
