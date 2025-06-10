@@ -13,29 +13,24 @@ export class VagasComponent implements OnInit {
   public vagas: Vaga[] = []; // vetor para armazenar as vagas do BD
 
   constructor(private _vagasService: VagasService){}
-  //injeta o serviço de vagas dentro do componente
-  
+  //injeta o serviço de vagas  dentro do componente
+
   ngOnInit(): void {
-    this.listarVagas(); // chama a função para listar as vagas quando o componente é inicializado
+    this.listarVagas();
   }
 
   //função para listar as vagas
-  listarVagas() {
-    this._vagasService.getVagas().subscribe(  // subscribe para receber os dados do serviço e tratar para o vetor
-      (e) => {
-        this.vagas = e.map(
+
+  listarVagas(){
+    this._vagasService.getVagas().subscribe( // subscribe é um método do Observable que permite recerber os dados e tratar para vetor
+      (e) => { // listar vaga por vaga dentro do vetor
+        this.vagas= e.map(
           (vaga) => {
-            return new Vaga(
-              vaga.id,
-              vaga.nome,
-              vaga.foto,
-              vaga.descricao,
-              vaga.salario
-            );
+            return Vaga.fromMap(vaga);
           }
-        ); 
+        );
       }
-    )    
+    )
   }
 
 }
