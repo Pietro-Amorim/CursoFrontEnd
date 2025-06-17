@@ -20,11 +20,12 @@
   <label for="">Descrição</label>
   <input type="text" [(ngModel)]="curriculo.descricao"> <br>
 
-
-  <button type="button" (click)="cadastrarcurriculo()">Cadastrar curriculo</button>
-  <button type="button" (click)="atualizarcurriculo(curriculo.id)">Atualizar curriculo</button>
-  <button type="button" (click)="excluircurriculo(curriculo.id)">Excluir curriculo</button>
-
+  <button type="button" (click)="cadastrarCurriculo()">Cadastrar curriculo</button>
+  <button type="button" (click)="atualizarCurriculo(curriculo.id)">Atualizar curriculo</button>
+  <button type="button" (click)="excluirCurriculo(curriculo.id)">Excluir curriculo</button>
+  <button class="btn-listar" type="button" (click)="listarCurriculoPorId(curriculo)">
+    Listar
+  </button>
 </form>
 
 <!-- Tabela com as curriculos já cadastradas -->
@@ -49,7 +50,7 @@
         <td>{{curriculo.email}}</td>
         <td>{{curriculo.descricao}}</td>
         <td>
-          <button class="btn-listar" type="button" (click)="listarcurriculoPorId(curriculo)">
+          <button class="btn-listar" type="button" (click)="listarCurriculoPorId(curriculo)">
             Listar
           </button>
         </td>

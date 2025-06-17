@@ -7,75 +7,73 @@ import { CurriculosService } from 'src/app/services/curriculos.service';
   templateUrl: './painel-Curriculos.component.html',
   styleUrls: ['./painel-Curriculos.component.scss']
 })
-export class PainelCurriculosComponent implements OnInit{ //controler ->
-  //atributos
-  public curriculo: Curriculo = new Curriculo(0,"","","",0);
-  //rastrear os dados no formulário por interpolação {{}}
-  public curriculos: Curriculo[] = []; // vetor para armazenar as Curriculos do BD
+export class PainelCurriculosComponent implements OnInit {
 
-  //construtor
-  constructor(private _curriculosService: CurriculosService){}
-  // aplicando o service no contrutor
+  // Atributos (Declaração e inicialização correta)
+  public curriculo: Curriculo = new Curriculo(0, "", 0, "", "", ""); // limpa o formulário
+  public curriculos: Curriculo[] = [];
 
-  // método onInit
-  ngOnInit(): void{
+  constructor(private _curriculosService: CurriculosService) {}
+
+  ngOnInit(): void {
     this.listarCurriculos();
   }
 
-  // 4 métodos para o crud
-  //READ - Curriculos
-  listarCurriculos(): void{
+  // READ - Listar todos os currículos
+  listarCurriculos(): void {
     this._curriculosService.getCurriculos().subscribe(
       (e) => {
         this.curriculos = e.map(
-          (curriculo)=> Curriculo.fromMap(curriculo)
+          (curriculo) => Curriculo.fromMap(curriculo)
         );
-      }, (error) => {
-        console.error("Erro ao Listar Curriculos: ",error);
+      },
+      (error) => {
+        console.error("Erro ao Listar Curriculos: ", error);
       }
     );
   }
 
-  //listar Curriculo por ID -READ - Curriculo unica
-  listarCurriculoPorId(curriculo:Curriculo): void{
-    // método para listar uma Curriculo no Formulário para Edição
+  // READ - Listar um currículo por ID (edição)
+  listarCurriculoPorId(curriculo: Curriculo): void {
     this.curriculo = curriculo;
-    //a Curriculo clicada é definida como a Curriculo atual do Formulário
   }
 
-  // CREATE - Curriculo
-  cadastrarCurriculo(): void{
+  // CREATE - Cadastrar currículo
+  cadastrarCurriculo(): void {
     this._curriculosService.postCurriculo(this.curriculo).subscribe(
-      () =>{
-        this.curriculo = new Curriculo(0, "", "", "", 0); //limpa o Formulário
-        this.listarCurriculos(); //lista as Curriculos novamente
-      }, (error) => {console.error("Erro ao Cadastrar Curriculo: ", error);}
+      () => {
+        this.curriculo = new Curriculo(0, "", 0, "", "", ""); // limpa o formulário
+        this.listarCurriculos(); // atualiza a lista
+      },
+      (error) => {
+        console.error("Erro ao Cadastrar Curriculo: ", error);
+      }
     );
   }
 
-  // UPDATE - Curriculo
-  atualizarCurriculo(id:any):void{
+  // UPDATE - Atualizar currículo
+  atualizarCurriculo(id: any): void {
     this._curriculosService.putCurriculo(id, this.curriculo).subscribe(
       () => {
-        this.curriculo = new Curriculo(0, '', '', '', 0); //limpa o formulário
-        this.listarCurriculos(); //lista as Curriculo novamente
+        this.curriculo = new Curriculo(0, "", 0, "", "", ""); // limpa o formulário
+        this.listarCurriculos(); // atualiza a lista
       },
-      (error) => {console.error('Erro ao Atualizar Curriculo: ', error);
+      (error) => {
+        console.error('Erro ao Atualizar Curriculo: ', error);
       }
     );
   }
 
-  //DELETE Curriculo
-  excluirCurriculo(id:any): void{
+  // DELETE - Excluir currículo
+  excluirCurriculo(id: any): void {
     this._curriculosService.deleteCurriculo(id).subscribe(
       () => {
-        this.curriculo = new Curriculo(0, '', '', '', 0); //limpa o formulário
-        this.listarCurriculos(); //lista as Curriculo novamente
+        this.curriculo = new Curriculo(0, "", 0, "", "", ""); // limpa o formulário
+        this.listarCurriculos(); // atualiza a lista
       },
       (error) => {
         console.error('Erro ao Deletar Curriculo: ', error);
       }
     );
   }
-
 }
