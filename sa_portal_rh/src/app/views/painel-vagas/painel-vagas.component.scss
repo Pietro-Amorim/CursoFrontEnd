@@ -1,48 +1,57 @@
-//estilização do painel de vagas
-//declaração de variaveis
+// Variáveis de cor
 $primaria: #007bff;
-$secundaria: #999;
+$secundaria: #6c757d;
 $sucesso: #28a745;
 $alerta: #dc3545;
-$aviso: #ffff00;
+$aviso: #ffc107;
+$background: #f8f9fa;
 
-
-h2{
-    text-align: center;
-    padding: 20px;
-    color: #555;
+// Título
+h2 {
+  text-align: center;
+  padding: 20px;
+  color: #222;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
-form{
+
+// Formulário
+form {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  background: $background;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 
-  label{
+  label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: #222;
     font-size: 1rem;
+    font-weight: 500;
   }
 
-  input{
-    width: calc(100% - 40px);
-    padding: 1rem 10px;
-    margin-bottom: 1.5rem;
-    border: 1px solid #aaa;
+  input {
+    width: 100%;
+    padding: 0.8rem 10px;
+    margin-bottom: 1.2rem;
+    border: 1px solid #bbb;
     border-radius: 5px;
     font-size: 1rem;
+    background: #fff;
+    color: #222;
+    transition: border-color 0.2s;
 
-    &:focus{
+    &:focus {
       outline: none;
       border-color: $primaria;
-      box-shadow: 0,0,0, rgba(0,0,0,0.25);
+      box-shadow: 0 0 0 2px rgba($primaria, 0.1);
     }
   }
 
   button {
-    padding: 0.8rem 1.5rem;
+    padding: 0.7rem 1.5rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -50,88 +59,110 @@ form{
     font-weight: bold;
     color: #fff;
     margin-right: 0.75rem;
+    margin-bottom: 0.5rem;
+    transition: background 0.2s;
 
-    &[type="button"]:nth-of-type(1){
-      background-color: $secundaria;
-      &:hover{
-        background-color: darken($color: $sucesso, $amount: 10%);
+    &:nth-of-type(1) {
+      background-color: $sucesso;
+      &:hover {
+        background-color: darken($sucesso, 10%);
       }
     }
-
-    &[type="button"]:nth-of-type(2){
-      background-color: $secundaria;
-      &:hover{
-        background-color: darken($color: $aviso, $amount: 10%);
+    &:nth-of-type(2) {
+      background-color: $primaria;
+      &:hover {
+        background-color: darken($primaria, 10%);
       }
     }
-
-    &[type="button"]:nth-of-type(3){
-      background-color: $secundaria;
-      &:hover{
-        background-color: darken($color: $alerta, $amount: 10%);
+    &:nth-of-type(3) {
+      background-color: $alerta;
+      &:hover {
+        background-color: darken($alerta, 10%);
+      }
+    }
+    &:nth-of-type(4) {
+      background-color: $aviso;
+      color: #222;
+      &:hover {
+        background-color: darken($aviso, 10%);
       }
     }
   }
-} //fim da estilização do formulário
+}
 
-//estilização da Tabela
-
-section{
+// Tabela
+section {
   max-width: 1300px;
   margin: 10px auto;
-  padding: 1rem;
+  padding: 1.5rem;
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   overflow-x: auto;
 
-  .table{
+  .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1.5rem;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    background: #fff;
 
-    th{
-      padding: 12px;
+    th, td {
+      padding: 14px 10px;
+      border-bottom: 1px solid #ddd;
+      color: #222;
       text-align: left;
-      border-bottom: 1px solid #aaa;
       vertical-align: middle;
-      color: #555;
     }
 
-    thead{
-      background-color: #999;
-      th{
-        color: #222;
+    thead {
+      background-color: $secundaria;
+      th {
+        color: #fff;
         font-weight: bold;
+        letter-spacing: 0.5px;
       }
     }
 
-    tbody{
-      tr{
-        &:hover{
-          background-color: #999;
+    tbody {
+      tr {
+        transition: background 0.2s;
+        &:hover {
+          background-color: #f1f3f5;
         }
       }
-      .btn-listar{
+      .btn-listar {
         border: none;
-        background-color: $secundaria;
-        padding: 5px;
+        background-color: $primaria;
+        color: #fff;
+        padding: 6px 14px;
         cursor: pointer;
-        border-radius: 5px;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        transition: background 0.2s;
 
-        &:hover{
-          background-color: darken($color: $aviso, $amount: 10%);
+        &:hover {
+          background-color: darken($primaria, 10%);
         }
       }
     }
   }
-}//fim da tabela
-
-.rodape{
-  height: 8vh;
 }
 
+// Rodapé
+.rodape {
+  height: 8vh;
+  background: $background;
+  border-top: 1px solid #eee;
+}
 
-
-
+// Responsividade
+@media (max-width: 800px) {
+  form, section {
+    max-width: 98vw;
+    padding: 1rem;
+  }
+  .table {
+    font-size: 0.9rem;
+  }
+}

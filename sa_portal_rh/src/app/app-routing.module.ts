@@ -7,11 +7,11 @@ import { PainelVagasComponent } from './views/painel-vagas/painel-vagas.componen
 import { PainelCurriculosComponent } from './views/painel-curriculos/painel-curriculos.component';
 
 const routes: Routes = [
-  {path: "",component: HomeComponent},
-  {path: "vagas",component: VagasComponent},
-  {path: "curriculos",component: CurriculosComponent},
-  {path:"painel-vagas", component: PainelVagasComponent},
-  {path: "painel-curriculos", component: PainelCurriculosComponent}
+  { path: "", component: HomeComponent },
+  { path: "vagas", component: VagasComponent },
+  { path: "curriculos", component: CurriculosComponent },
+  { path: "painel-vagas", component: PainelVagasComponent },
+  { path: "painel-curriculos", component: PainelCurriculosComponent }
 ];
 
 @NgModule({
