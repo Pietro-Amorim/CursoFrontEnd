@@ -1,14 +1,28 @@
 {
-  "vagas": [],
+  "vagas": [
+    {
+      "id": 0,
+      "nome": "",
+      "foto": "",
+      "descricao": "",
+      "salario": 0
+    },
+    {
+      "id": 0,
+      "nome": "",
+      "foto": "",
+      "descricao": "",
+      "salario": 0
+    }
+  ],
   "curriculos": [
     {
-      "id": "d4f1",
-      "_id": 0,
-      "_nome": "",
-      "_idade": 0,
-      "_telefone": "",
-      "_email": "",
-      "_descricao": ""
+      "id": "12",
+      "nome": "A",
+      "idade": "15",
+      "telefone": "199999999999",
+      "email": "mai",
+      "descricao": "sa"
     }
   ]
 }
