@@ -41,14 +41,14 @@ export class CurriculoListComponent implements OnInit {
     // Verifica se é número (ID)
     if (!isNaN(Number(termo))) {
       const id = Number(termo);
-      this.curriculoService.getCurriculos(id).subscribe(
-        (curriculo: any) => {
-          this.resultados = [Curriculo.fromMap(curriculo)];
-        },
-        () => {
-          this.resultados = [];
-        }
-      );
+      this.curriculoService.getCurriculoPorId(id).subscribe(
+  (curriculo: any) => {
+    this.resultados = [Curriculo.fromMap(curriculo)];
+  },
+  () => {
+    this.resultados = [];
+  }
+);
     } else {
       // Busca por nome (case insensitive)
       this.resultados = this.todosCurriculos.filter((curriculo) =>

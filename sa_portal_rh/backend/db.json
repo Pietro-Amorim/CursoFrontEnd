@@ -1,28 +1,38 @@
 {
   "vagas": [
     {
-      "id": 0,
-      "nome": "",
-      "foto": "",
+      "id": 1,
+      "titulo": "",
+      "empresa": "",
       "descricao": "",
-      "salario": 0
+      "salario": "",
+      "localizacao": ""
     },
     {
-      "id": 0,
-      "nome": "",
-      "foto": "",
-      "descricao": "",
-      "salario": 0
+      "id": 2,
+      "titulo": "Analista de Dados",
+      "empresa": "Data Corp",
+      "descricao": "Análise de dados e criação de dashboards.",
+      "salario": "90",
+      "localizacao": "Rio de Janeiro"
     }
   ],
   "curriculos": [
     {
-      "id": "12",
-      "nome": "A",
-      "idade": "15",
-      "telefone": "199999999999",
-      "email": "mai",
-      "descricao": "sa"
+      "id": 1,
+      "nome": "Maria Silva",
+      "idade": "32",
+      "telefone": "11999999999",
+      "email": "maria.silva@email.com",
+      "descricao": "Formada em Ciência da Computação, experiência em Angular e React."
+    },
+    {
+      "id": 2,
+      "nome": "João Souza",
+      "idade": "43",
+      "telefone": "21988888888",
+      "email": "joao.souza@email.com",
+      "descricao": "Analista de dados com experiência em Python e Power BI."
     }
   ]
 }

@@ -12,30 +12,27 @@ export class VagasService {
 
   constructor(private http: HttpClient){ }
 
-  // criar os metodos conexões com a ApiREST
+  // GET
+  getVagas(): Observable<Vaga[]> {
+    return this.http.get<Vaga[]>(this.apiUrl);
+  }
 
-  // get
-  getVagas(): Observable<Vaga[]> { //observable -> rxjs => tradutor de json para ts
-    return this.http.get<Vaga[]>(this.apiUrl); //conecta com a api para coletar os dados
+  // POST
+  postVaga(vaga: Vaga): Observable<Vaga> {
+    return this.http.post<Vaga>(this.apiUrl, vaga);
   }
-  // post
-  postVaga(vaga:Vaga): Observable<Vaga[]>{
-    return this.http.post<Vaga[]>(this.apiUrl,vaga);
-    //observable -> rxjs => tradutor de Json para typescript 
+
+  // PUT
+  putVaga(id: any, vaga: Vaga): Observable<Vaga> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<Vaga>(url, vaga);
   }
-  // put
-  // nomeDoMétodo(parâmetros)
-  putVaga(id: any, vaga:Vaga): Observable<Vaga[]>{ //coleção chave -> valor
-    
-    //http://localhost:3000/vagas/"xxxx"
-    const url = `${this.apiUrl}/${id}`; //construir a url join(api + id)
-    return this.http.put<Vaga[]>(url, vaga);
+
+  // DELETE
+  deleteVaga(id: any): Observable<void> {
+    const url = this.apiUrl + "/" + id;
+    return this.http.delete<void>(url);
   }
-  // delete
-  deleteVaga(id: any): Observable<Vaga[]>{
-    const url = this.apiUrl+"/"+id;
-    return this.http.delete<Vaga[]>(url);
-  } 
 
   // diferença put e path
   // put -> atualiza mais doq um Valor

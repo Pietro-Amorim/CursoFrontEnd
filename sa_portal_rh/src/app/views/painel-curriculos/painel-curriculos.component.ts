@@ -9,8 +9,7 @@ import { CurriculosService } from 'src/app/services/curriculos.service';
 })
 export class PainelCurriculosComponent implements OnInit {
 
-  // Atributos (Declaração e inicialização correta)
-  public curriculo: Curriculo = new Curriculo(0, "", 0, "", "", ""); // limpa o formulário
+  public curriculo: Curriculo = new Curriculo(0, "", 0, "", "", "");
   public curriculos: Curriculo[] = [];
 
   constructor(private _curriculosService: CurriculosService) {}
@@ -19,7 +18,7 @@ export class PainelCurriculosComponent implements OnInit {
     this.listarCurriculos();
   }
 
-  // READ - Listar todos os currículos
+  // Listar todos os currículos
   listarCurriculos(): void {
     this._curriculosService.getCurriculos().subscribe(
       (e) => {
@@ -33,17 +32,17 @@ export class PainelCurriculosComponent implements OnInit {
     );
   }
 
-  // READ - Listar um currículo por ID (edição)
+  // Listar um currículo por ID (edição)
   listarCurriculoPorId(curriculo: Curriculo): void {
     this.curriculo = curriculo;
   }
 
-  // CREATE - Cadastrar currículo
+  // Cadastrar currículo
   cadastrarCurriculo(): void {
     this._curriculosService.postCurriculo(this.curriculo).subscribe(
       () => {
-        this.curriculo = new Curriculo(0, "", 0, "", "", ""); // limpa o formulário
-        this.listarCurriculos(); // atualiza a lista
+        this.curriculo = new Curriculo(0, "", 0, "", "", "");
+        this.listarCurriculos();
       },
       (error) => {
         console.error("Erro ao Cadastrar Curriculo: ", error);
@@ -51,12 +50,12 @@ export class PainelCurriculosComponent implements OnInit {
     );
   }
 
-  // UPDATE - Atualizar currículo
+  // Atualizar currículo
   atualizarCurriculo(id: any): void {
     this._curriculosService.putCurriculo(id, this.curriculo).subscribe(
       () => {
-        this.curriculo = new Curriculo(0, "", 0, "", "", ""); // limpa o formulário
-        this.listarCurriculos(); // atualiza a lista
+        this.curriculo = new Curriculo(0, "", 0, "", "", "");
+        this.listarCurriculos();
       },
       (error) => {
         console.error('Erro ao Atualizar Curriculo: ', error);
@@ -64,12 +63,12 @@ export class PainelCurriculosComponent implements OnInit {
     );
   }
 
-  // DELETE - Excluir currículo
+  // Excluir currículo
   excluirCurriculo(id: any): void {
     this._curriculosService.deleteCurriculo(id).subscribe(
       () => {
-        this.curriculo = new Curriculo(0, "", 0, "", "", ""); // limpa o formulário
-        this.listarCurriculos(); // atualiza a lista
+        this.curriculo = new Curriculo(0, "", 0, "", "", "");
+        this.listarCurriculos();
       },
       (error) => {
         console.error('Erro ao Deletar Curriculo: ', error);

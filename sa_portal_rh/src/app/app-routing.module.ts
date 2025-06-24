@@ -5,13 +5,15 @@ import { VagasComponent } from './views/vagas/vagas.component';
 import { CurriculosComponent } from './views/curriculos/curriculos.component';
 import { PainelVagasComponent } from './views/painel-vagas/painel-vagas.component';
 import { PainelCurriculosComponent } from './views/painel-curriculos/painel-curriculos.component';
+import { CurriculoListComponent } from './views/curriculo-list/curriculo-list.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "vagas", component: VagasComponent },
   { path: "curriculos", component: CurriculosComponent },
   { path: "painel-vagas", component: PainelVagasComponent },
-  { path: "painel-curriculos", component: PainelCurriculosComponent }
+  { path: "painel-curriculos", component: PainelCurriculosComponent },
+  { path: "curriculo-list", component: CurriculoListComponent}
 ];
 
 @NgModule({
