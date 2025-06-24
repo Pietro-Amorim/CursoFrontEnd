@@ -35,6 +35,6 @@ export class VagasService {
   }
 
   // diferença put e path
-  // put -> atualiza mais doq um Valor
+  // put -> atualiza mais do que um Valor
   // path -> permite atualizar apenas uma informação
 }

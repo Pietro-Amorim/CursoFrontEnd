@@ -1,4 +1,6 @@
 // arquivo responsável pela modelagem de dados para Curriculos
+
+
 export class Curriculo {
 
     // atributos
@@ -25,15 +27,14 @@ export class Curriculo {
         };
     }
 
-    static fromMap(map: any): Curriculo {
-        return new Curriculo(
-            map.id,
-            map.nome,
-            map.idade,
-            // Garante que telefone e email sejam string ao criar a instância
-            map.telefone ? String(map.telefone) : '', // Conversão segura para string
-            map.email ? String(map.email) : '',       // Conversão segura para string
-            map.descricao
-        );
-    }
+static fromMap(map: any): Curriculo {
+    return new Curriculo(
+        Number(map.id),
+        map.nome,
+        Number(map.idade), // <-- converte para número
+        map.telefone ? String(map.telefone) : '',
+        map.email ? String(map.email) : '',
+        map.descricao
+    );
+}
 }

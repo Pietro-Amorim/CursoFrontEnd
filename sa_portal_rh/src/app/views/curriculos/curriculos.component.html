@@ -1,16 +1,14 @@
 <section class="listar-curriculos">
-    <!-- property do data binding *ngFor -->
-    <div *ngFor="let curriculo of curriculos">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Código do curriculo: {{curriculo.id}}</h5>
-                <h5 class="card-title">curriculo: {{curriculo.nome}}</h5>
-                <h5 class="card-title">Idade: {{curriculo.idade}}</h5>
-                <h5 class="card-title">Telefone: {{curriculo.telefone}}</h5>
-                <h5 class="card-title">Email: {{curriculo.email}}</h5>
-                <p class="card-text">Descrição do curriculo: {{curriculo.descricao}}</p>            </div>
-        </div>
+  <div class="card" *ngFor="let curriculo of curriculos">
+    <div class="card-body">
+      <h5 class="card-title">Código do curriculo: {{ curriculo.id }}</h5>
+      <p class="card-text">curriculo: {{ curriculo.nome }}</p>
+      <p class="card-text">Idade: {{ curriculo.idade }}</p>
+      <p class="card-text">Telefone: {{ curriculo.telefone }}</p>
+      <p class="card-text">Email: {{ curriculo.email }}</p>
+      <p class="card-text">Descrição do curriculo: {{ curriculo.descricao }}</p>
     </div>
+  </div>
 </section>
 
 <div class="rodape"></div>
