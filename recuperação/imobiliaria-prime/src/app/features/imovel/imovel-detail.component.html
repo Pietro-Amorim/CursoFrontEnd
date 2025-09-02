@@ -1,0 +1,15 @@
+<div *ngIf="imovel as i" class="container">
+  <h2>{{ i.titulo }}</h2>
+  <img [src]="i.imagemUrl" alt="{{ i.titulo }}" width="400" />
+
+  <p><b>Cidade:</b> {{ i.cidade }}</p>
+  <p><b>Tipo:</b> {{ i.tipo }}</p>
+  <p><b>Preço:</b> {{ i.preco | currency:'BRL' }}</p>
+  <p><b>Descrição:</b> {{ i.descricao }}</p>
+
+  <!-- Botão só aparece se for cliente -->
+  <button *ngIf="user?.tipo === 'cliente'" (click)="marcarInteresse()"
+          mat-raised-button color="primary">
+    Tenho Interesse
+  </button>
+</div>

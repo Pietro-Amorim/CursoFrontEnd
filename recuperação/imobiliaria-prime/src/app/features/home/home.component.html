@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <span>Imobiliária Prime</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/login">Login</button>
+</mat-toolbar>
+
+<div class="container">
+  <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
+    <mat-grid-tile *ngFor="let imovel of imoveis">
+      <mat-card>
+        <img mat-card-image [src]="imovel.imagemUrl" alt="{{imovel.titulo}}">
+        <mat-card-header>
+          <mat-card-title>{{imovel.titulo}}</mat-card-title>
+          <mat-card-subtitle>{{imovel.cidade}} • {{imovel.tipo}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{imovel.descricao | slice:0:100}}...</p>
+          <h3>{{imovel.preco | currency:'BRL'}}</h3>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="accent" [routerLink]="['/imovel', imovel.id]">Ver</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

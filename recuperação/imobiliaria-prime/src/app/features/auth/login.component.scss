@@ -1,0 +1,21 @@
+.login-container {
+  background: #fff;
+  color: #222;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 350px;
+  margin: 3rem auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  color: #c92323;
+}
+
+.login-container input,
+.login-container button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}

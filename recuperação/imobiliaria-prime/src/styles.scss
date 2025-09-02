@@ -1,0 +1,13 @@
+:root {
+  --prime-green: #009B77;
+  --dark-gray: #333333;
+}
+
+.mat-toolbar.mat-primary {
+  background: var(--prime-green);
+  color: #fff;
+}
+
+body {
+  color: var(--dark-gray);
+}

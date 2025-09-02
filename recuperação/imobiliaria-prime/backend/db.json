@@ -1,0 +1,32 @@
+{
+  "usuarios": [
+    { "id": 1, "nome": "Admin", "email": "admin@prime.com", "senha": "admin123", "tipo": "admin" },
+    {
+      "id": 2,
+      "nome": "Carlos Corretor",
+      "email": "corretor@prime.com",
+      "senha": "123",
+      "tipo": "corretor"
+    },
+    {
+      "id": 3,
+      "nome": "Ana Cliente",
+      "email": "cliente@email.com",
+      "senha": "123",
+      "tipo": "cliente"
+    }
+  ],
+  "imoveis": [
+    {
+      "id": 1,
+      "titulo": "Apartamento com vista para o mar",
+      "corretorId": 2,
+      "tipo": "Apartamento",
+      "cidade": "Santos",
+      "preco": 750000,
+      "descricao": "Lindo apartamento com 3 quartos e varanda.",
+      "imagemUrl": "https://placehold.co/600x400"
+    }
+  ],
+  "interesses": [{ "id": 1, "clienteId": 3, "imovelId": 1 }]
+}

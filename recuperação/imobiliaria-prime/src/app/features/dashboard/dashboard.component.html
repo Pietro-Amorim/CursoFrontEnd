@@ -1,0 +1,22 @@
+<div *ngIf="podeCadastrar()">
+  <h3>Cadastrar Imóvel</h3>
+  <input [(ngModel)]="titulo" placeholder="Título">
+  <input [(ngModel)]="tipo" placeholder="Tipo">
+  <input [(ngModel)]="cidade" placeholder="Cidade">
+  <input [(ngModel)]="preco" type="number" placeholder="Preço">
+  <input [(ngModel)]="descricao" placeholder="Descrição">
+  <input [(ngModel)]="imagemUrl" placeholder="URL da Imagem">
+  <button (click)="cadastrar()">Cadastrar</button>
+</div>
+
+<h3>Imóveis</h3>
+<ul>
+  <li *ngFor="let i of imoveis">
+    {{ i.titulo }} - {{i.tipo}} - {{ i.cidade }} - R$ {{ i.preco }}
+    <button *ngIf="podeCadastrar()" (click)="remover(i.id)">Remover</button>
+    <label *ngIf="user?.tipo === 'cliente'">
+      <input type="checkbox" [checked]="marcouInteresse(i.id)" (change)="toggleInteresse(i.id)">
+      Tenho interesse
+    </label>
+  </li>
+</ul>
