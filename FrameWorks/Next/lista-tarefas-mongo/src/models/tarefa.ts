@@ -9,7 +9,7 @@ export interface ITarefa  extends Document{
     criadaEm: Date;
 }
 
-// criar o schema (a regra) no mongo DB
+// criar o schema => esquema da tabela ou modelo (a regra) no mongo DB
 
 const TarefaSchema: Schema<ITarefa> = new mongoose.Schema({
     titulo: { 
@@ -28,7 +28,7 @@ const TarefaSchema: Schema<ITarefa> = new mongoose.Schema({
     }
 })
 
-// export do modelo
+// export do modelo (tanto para enviar as informações para o banco, quanto para receber as informações)
 
 const Tarefa: Model<ITarefa> = mongoose.models.Tarefa || mongoose.model<ITarefa>("Tarefa", TarefaSchema);
 

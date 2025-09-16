@@ -1,29 +1,31 @@
+//rotas que não precisam especificar o ID (GET/POST)
+
 import { createTarefa, getAllTarefas } from "@/controllers/tarefaController";
 import { NextRequest, NextResponse } from "next/server";
 
-// criar as rotas que nao precisam de id
+//GET
 export async function GET(){
     try {
-        const tarefas = await getAllTarefas();
-        // trata a resposta obtida com a conexão com o MongoDB
-        return NextResponse.json({sucess: true, data: tarefas});
+        const tarefas = await getAllTarefas(); // chama o controller
+        return NextResponse.json({success:true, data:tarefas}, {status: 200});
     } catch (error) {
         return NextResponse.json({
-            sucess: false,
-            error: `Falha ao buscar as tarefas: ${error}`
-        }, {status: 500});
+            success: false,
+            error: `Falha ao Buscar As Tarefas: ${error}`
+        }, {status:500});
     }
 }
 
-export async function POST(req: NextRequest){
+//POST
+export async function POST(req:NextRequest) { // req = são os dados para fazer a requisição
     try {
-        const data = await req.json();
+        const data = await req.json(); // verifica / converte se esta escrito no formato json
         const newTarefa = await createTarefa(data);
-        return NextResponse.json({sucess:true, data: newTarefa}, {status:201});
+        return NextResponse.json({success:true, data:newTarefa}, {status: 201});
     } catch (error) {
         return NextResponse.json({
-            sucess: false,
-            error: `Falha ao criar a tarefa: ${error}`
-        }, {status: 400} );
+            success: false,
+            error: `Falha ao Inserir Tarefa: ${error}`
+        }, {status:500});
     }
 }
