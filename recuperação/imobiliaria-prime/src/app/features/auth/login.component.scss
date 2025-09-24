@@ -1,21 +1,92 @@
 .login-container {
-  background: #fff;
-  color: #222;
-  padding: 2rem;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #333333;
   border-radius: 8px;
-  max-width: 350px;
-  margin: 3rem auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-family: Arial, sans-serif;
+
+  h2 {
+    color: #009B77;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input {
+      padding: 12px 16px;
+      border: 2px solid #555555;
+      border-radius: 6px;
+      background-color: #444444;
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+
+      &::placeholder {
+        color: #999999;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #009B77;
+        background-color: #333333;
+        box-shadow: 0 0 0 2px rgba(0, 155, 119, 0.2);
+      }
+    }
+
+    button {
+      padding: 14px;
+      background-color: #009B77;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #007a5f;
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      &:disabled {
+        background-color: #555555;
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+
+    p {
+      text-align: center;
+      margin: 0;
+      padding: 10px;
+      background-color: rgba(255, 0, 0, 0.1);
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      border-radius: 4px;
+      color: #ff6b6b;
+    }
+  }
 }
 
-.login-container h2 {
-  color: #c92323;
-}
-
-.login-container input,
-.login-container button {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
+// Estilo adicional para o fundo da página (opcional)
+body {
+  background-color: #1a1a1a;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
