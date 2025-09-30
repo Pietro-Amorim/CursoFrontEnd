@@ -108,8 +108,7 @@ Desenvolver uma **SPA (Single Page Application)** moderna, responsiva e segura, 
 ### 🔹 Diagrama de Caso de Uso
 
 ```mermaid
-%%{init: {"theme": "default"}}%%
-usecaseDiagram
+graphTD
 actor Visitante
 actor Cliente
 actor Corretor
