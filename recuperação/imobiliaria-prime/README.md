@@ -109,25 +109,25 @@ Desenvolver uma **SPA (Single Page Application)** moderna, responsiva e segura, 
 
 ```mermaid
 graphTD
-actor Visitante
-actor Cliente
-actor Corretor
+  actor Visitante
+  actor Cliente
+  actor Corretor
 
-Visitante --> (Visualizar página inicial)
-Visitante --> (Visualizar detalhes de imóvel)
-Visitante --> (Cadastrar conta cliente)
+  Visitante --> (Visualizar página inicial)
+  Visitante --> (Visualizar detalhes de imóvel)
+  Visitante --> (Cadastrar conta cliente)
 
-Cliente --> (Fazer login)
-Cliente --> (Marcar interesse em imóvel)
-Cliente --> (Visualizar imóveis salvos)
-Cliente --> (Editar perfil)
+  Cliente --> (Fazer login)
+  Cliente --> (Marcar interesse em imóvel)
+  Cliente --> (Visualizar imóveis salvos)
+  Cliente --> (Editar perfil)
 
-Corretor --> (Fazer login)
-Corretor --> (Gerenciar imóveis)
-Corretor --> (Visualizar clientes interessados)
+  Corretor --> (Fazer login)
+  Corretor --> (Gerenciar imóveis)
+  Corretor --> (Visualizar clientes interessados)
 
-(Visualizar página inicial) --> (Visualizar detalhes de imóvel) : <<include>>
-(Cadastrar conta cliente) --> (Fazer login) : <<include>>
+  (Visualizar página inicial) --> (Visualizar detalhes de imóvel) : <<include>>
+  (Cadastrar conta cliente) --> (Fazer login) : <<include>>
 ```
 
 ### 🔹 Diagrama de Classes
