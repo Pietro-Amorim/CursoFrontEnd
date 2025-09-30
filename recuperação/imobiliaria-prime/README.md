@@ -144,9 +144,6 @@ flowchart TD
     CU1 -->|include| CU2
     CU3 -->|include| CU4
 
-    %% Estilização (opcional, mas suportada)
-    classDef actor fill:#4CAF50,stroke:#2E7D32,color:white,fontWeight:bold;
-    classDef usecase fill:#E3F2FD,stroke:#1976D2;
 
     class Visitante,Cliente,Corretor actor
     class CU1,CU2,CU3,CU4,CU5,CU6,CU7,CU8,CU9 usecase
