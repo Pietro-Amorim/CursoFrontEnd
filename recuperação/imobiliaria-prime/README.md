@@ -108,26 +108,48 @@ Desenvolver uma **SPA (Single Page Application)** moderna, responsiva e segura, 
 ### 🔹 Diagrama de Caso de Uso
 
 ```mermaid
-graph TD
-  actor Visitante
-  actor Cliente
-  actor Corretor
+flowchart TD
+    %% Atores
+    Visitante["Visitante"]
+    Cliente["Cliente"]
+    Corretor["Corretor"]
 
-  Visitante --> (Visualizar página inicial)
-  Visitante --> (Visualizar detalhes de imóvel)
-  Visitante --> (Cadastrar conta cliente)
+    %% Casos de uso
+    CU1["Visualizar página inicial"]
+    CU2["Visualizar detalhes de imóvel"]
+    CU3["Cadastrar conta cliente"]
+    CU4["Fazer login"]
+    CU5["Marcar interesse em imóvel"]
+    CU6["Visualizar imóveis salvos"]
+    CU7["Editar perfil"]
+    CU8["Gerenciar imóveis"]
+    CU9["Visualizar clientes interessados"]
 
-  Cliente --> (Fazer login)
-  Cliente --> (Marcar interesse em imóvel)
-  Cliente --> (Visualizar imóveis salvos)
-  Cliente --> (Editar perfil)
+    %% Relacionamentos: ator -> caso de uso
+    Visitante --> CU1
+    Visitante --> CU2
+    Visitante --> CU3
 
-  Corretor --> (Fazer login)
-  Corretor --> (Gerenciar imóveis)
-  Corretor --> (Visualizar clientes interessados)
+    Cliente --> CU4
+    Cliente --> CU5
+    Cliente --> CU6
+    Cliente --> CU7
 
-  (Visualizar página inicial) --> (Visualizar detalhes de imóvel) : <<include>>
-  (Cadastrar conta cliente) --> (Fazer login) : <<include>>
+    Corretor --> CU4
+    Corretor --> CU8
+    Corretor --> CU9
+
+    %% Relacionamentos de include (uso de setas tracejadas não é suportado no GitHub,
+    %% então usamos setas normais com rótulo)
+    CU1 -->|include| CU2
+    CU3 -->|include| CU4
+
+    %% Estilização (opcional, mas suportada)
+    classDef actor fill:#4CAF50,stroke:#2E7D32,color:white,fontWeight:bold;
+    classDef usecase fill:#E3F2FD,stroke:#1976D2;
+
+    class Visitante,Cliente,Corretor actor
+    class CU1,CU2,CU3,CU4,CU5,CU6,CU7,CU8,CU9 usecase
 ```
 
 ### 🔹 Diagrama de Classes
