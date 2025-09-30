@@ -2,87 +2,84 @@
 
 ## 📖 Introdução
 
-O **Imobiliária Prime** é um projeto desenvolvido em **Angular**, com objetivo de simular uma plataforma de imobiliária online.
-A aplicação permite que **clientes** possam visualizar imóveis, criar conta e registrar interesse em anúncios, enquanto **corretores** têm acesso a um painel administrativo para cadastrar, editar e gerenciar seus imóveis.
+O **Imobiliária Prime** é uma aplicação web desenvolvida em **Angular** que simula uma plataforma de imobiliária online.  
+A ideia é permitir que **clientes** naveguem pelos imóveis disponíveis, criem uma conta e expressem interesse em anúncios, enquanto **corretores** gerenciam seus próprios imóveis por meio de um painel administrativo.
 
----
+O projeto foi construído com foco em boas práticas de desenvolvimento frontend: autenticação, autorização, guarda de rotas, componentização e integração com um backend simulado.
 
 ## 🎯 Objetivo
 
-Construir uma **SPA (Single Page Application)** moderna, responsiva e segura, que facilite a interação entre clientes e corretores, utilizando autenticação, autorização e guarda de rotas para controle de acesso.
+Desenvolver uma **SPA (Single Page Application)** moderna, responsiva e segura, que permita a interação entre dois perfis de usuário — **cliente** e **corretor** — com controle de acesso baseado em funções.
 
----
+## 🛠️ Tecnologias Utilizadas
 
-## 🛠️ Tecnologias
-
-* **Angular** (framework principal)
-* **TypeScript** (linguagem)
-* **SCSS** (estilização)
-* **JSON Server** (backend simulado)
-* **LocalStorage / SessionStorage** (armazenamento de sessão)
-
----
+- **Frontend**: Angular (v15+), TypeScript, SCSS  
+- **Backend simulado**: JSON Server  
+- **Persistência de sessão**: `localStorage`  
+- **Ferramentas**: Angular CLI, npm
 
 ## ⚙️ Funcionalidades
 
-### Público (usuário não logado)
+### Público (não logado)
+- Visualizar a página inicial com imóveis em destaque  
+- Acessar a página de detalhes de qualquer imóvel  
+- Criar uma conta do tipo **cliente**
 
-* Visualizar página inicial com imóveis em destaque.
-* Acessar detalhes de um imóvel.
-* Criar conta de cliente.
+### Cliente (logado)
+- Fazer login com e-mail e senha  
+- Marcar imóveis como “Tenho Interesse”  
+- Visualizar a lista de imóveis salvos  
+- Editar seu próprio perfil (nome e senha)
 
-### Cliente (usuário logado como cliente)
-
-* Login e autenticação.
-* Marcar imóveis como “Tenho Interesse”.
-* Listar imóveis de interesse.
-* Editar informações de perfil.
-
-### Corretor (usuário logado como corretor)
-
-* Login (conta criada previamente pelo administrador).
-* Painel administrativo com seus anúncios.
-* CRUD completo de imóveis (criação, edição e exclusão).
-* Visualizar clientes interessados em cada imóvel.
+### Corretor (logado)
+- Fazer login com credenciais pré-cadastradas  
+- Acessar o **dashboard** com seus imóveis  
+- Realizar **CRUD completo** de imóveis (criar, ler, atualizar, excluir)  
+- Visualizar quais **clientes demonstraram interesse** em cada imóvel
 
 ### Segurança
-
-* **AuthGuard:** restringe o acesso a áreas privadas.
-* **CorretorGuard:** garante que apenas corretores acessem o dashboard.
-
----
+- **`AuthGuard`**: impede acesso a rotas privadas sem autenticação  
+- **`CorretorGuard`**: permite acesso ao dashboard apenas para usuários do tipo *corretor*
 
 ## 📋 Requisitos
 
 ### Requisitos Funcionais
-
-1. O sistema deve permitir cadastro e login de clientes.
-2. O sistema deve autenticar usuários e controlar a sessão.
-3. O sistema deve permitir que clientes marquem interesse em imóveis.
-4. O sistema deve exibir os imóveis cadastrados por corretores.
-5. O sistema deve permitir CRUD de imóveis apenas para corretores.
-6. O sistema deve exibir a lista de imóveis salvos pelo cliente.
-7. O sistema deve permitir que corretores visualizem clientes interessados em seus imóveis.
+1. O sistema deve permitir cadastro e login de clientes.  
+2. O sistema deve autenticar usuários e manter a sessão ativa.  
+3. Clientes devem poder marcar interesse em imóveis.  
+4. Todos os usuários devem visualizar os imóveis cadastrados.  
+5. Apenas corretores podem criar, editar ou excluir imóveis.  
+6. Clientes devem visualizar a lista de imóveis que marcaram como interesse.  
+7. Corretores devem ver quais clientes se interessaram por cada imóvel.
 
 ### Requisitos Não Funcionais
+1. A interface deve ser **responsiva** (funcionar bem em mobile e desktop).  
+2. O frontend deve usar **Angular 15 ou superior**.  
+3. O backend deve ser simulado com **JSON Server**.  
+4. O tempo de resposta das operações deve ser **inferior a 2 segundos** (em ambiente local).  
+5. O código deve seguir boas práticas: componentes reutilizáveis, serviços bem definidos e injeção de dependência.  
+6. Apenas usuários autenticados devem acessar rotas protegidas.  
+7. A sessão do usuário deve ser persistida com `localStorage`.
 
-1. A aplicação deve ser responsiva (adaptada para desktop e dispositivos móveis).
-2. O frontend deve ser desenvolvido em Angular (versão mínima 15+).
-3. O backend simulado deve ser implementado com JSON Server.
-4. O tempo de resposta das interações deve ser inferior a 2 segundos.
-5. O código deve seguir boas práticas de componentização e reutilização.
-6. O sistema deve garantir que apenas usuários autenticados acessem áreas restritas.
-7. A autenticação deve ser persistida no navegador (LocalStorage ou SessionStorage).
-
----
-
-## 🗂️ Estrutura de Dados (db.json)
+## 🗂️ Estrutura de Dados (`db.json`)
 
 ```json
 {
   "usuarios": [
-    { "id": 1, "nome": "Carlos Corretor", "email": "corretor@prime.com", "senha": "123", "tipo": "corretor" },
-    { "id": 2, "nome": "Ana Cliente", "email": "cliente@email.com", "senha": "123", "tipo": "cliente" }
+    {
+      "id": 1,
+      "nome": "Carlos Corretor",
+      "email": "corretor@prime.com",
+      "senha": "123",
+      "tipo": "corretor"
+    },
+    {
+      "id": 2,
+      "nome": "Ana Cliente",
+      "email": "cliente@email.com",
+      "senha": "123",
+      "tipo": "cliente"
+    }
   ],
   "imoveis": [
     {
@@ -92,105 +89,111 @@ Construir uma **SPA (Single Page Application)** moderna, responsiva e segura, qu
       "tipo": "Apartamento",
       "cidade": "Santos",
       "preco": 750000,
-      "descricao": "Lindo apartamento com 3 quartos...",
-      "imagemUrl": "url_da_imagem.jpg"
+      "descricao": "Lindo apartamento com 3 quartos, sacada gourmet e vista para o mar.",
+      "imagemUrl": "assets/imoveis/apto-mar.jpg"
     }
   ],
   "interesses": [
-    { "id": 1, "clienteId": 2, "imovelId": 1 }
+    {
+      "id": 1,
+      "clienteId": 2,
+      "imovelId": 1
+    }
   ]
 }
 ```
 
-
 ## 📊 Diagramas
 
-### Diagrama de Caso de Uso
+### Diagrama de Casos de Uso
 
 ```mermaid
-usecaseDiagram
+%%{init: {"theme": "default"}}%%
+useCaseDiagram
+actor Visitante
 actor Cliente
 actor Corretor
-actor "Visitante" as Visitante
 
-Cliente --> (Fazer Login)
-Cliente --> (Cadastrar Conta)
-Cliente --> (Visualizar Imóveis)
-Cliente --> (Marcar Interesse em Imóvel)
-Cliente --> (Editar Perfil)
-Cliente --> (Visualizar Imóveis Salvos)
+Visitante --> (Visualizar página inicial)
+Visitante --> (Visualizar detalhes de imóvel)
+Visitante --> (Cadastrar conta cliente)
 
-Corretor --> (Fazer Login)
-Corretor --> (Gerenciar Imóveis)
-Corretor --> (Visualizar Clientes Interessados)
+Cliente --> (Fazer login)
+Cliente --> (Marcar interesse em imóvel)
+Cliente --> (Visualizar imóveis salvos)
+Cliente --> (Editar perfil)
 
-Visitante --> (Visualizar Página Inicial)
-Visitante --> (Visualizar Detalhes de Imóvel)
+Corretor --> (Fazer login)
+Corretor --> (Gerenciar imóveis)
+Corretor --> (Visualizar clientes interessados)
+
+(Visualizar página inicial) .> (Visualizar detalhes de imóvel) : include
+(Cadastrar conta cliente) .> (Fazer login) : include
 ```
-
----
 
 ### Diagrama de Classes
 
 ```mermaid
 classDiagram
     class Usuario {
-      +int id
-      +string nome
-      +string email
-      +string senha
-      +string tipo  // cliente ou corretor
+        +int id
+        +string nome
+        +string email
+        +string senha
+        +string tipo
     }
 
     class Imovel {
-      +int id
-      +string titulo
-      +string tipo
-      +string cidade
-      +double preco
-      +string descricao
-      +string imagemUrl
-      +int corretorId
+        +int id
+        +string titulo
+        +string tipo
+        +string cidade
+        +number preco
+        +string descricao
+        +string imagemUrl
+        +int corretorId
     }
 
     class Interesse {
-      +int id
-      +int clienteId
-      +int imovelId
+        +int id
+        +int clienteId
+        +int imovelId
     }
 
-    Usuario "1" <|-- "N" Imovel : cadastra >
-    Usuario "1" <|-- "N" Interesse : manifesta >
-    Imovel "1" <|-- "N" Interesse : gera >
+    Usuario "1" *-- "0..N" Imovel : cadastra
+    Usuario "1" *-- "0..N" Interesse : manifesta
+    Imovel "1" *-- "0..N" Interesse : recebe
 ```
 
----
-
-### Diagrama de Fluxo do Sistema (Login e Acesso)
+### Diagrama de Fluxo (Login e Navegação)
 
 ```mermaid
 flowchart TD
-    A[Início] --> B[Visitante acessa sistema]
-    B -->|Cadastrar| C[Criar conta Cliente]
-    B -->|Login| D[Autenticação]
+    A[Acesso à aplicação] --> B{Usuário está logado?}
+    B -- Não --> C[Visitante]
+    C --> D[Visualizar imóveis]
+    C --> E[Criar conta]
+    C --> F[Fazer login]
 
-    D -->|Sucesso: Cliente| E[Área do Cliente]
-    D -->|Sucesso: Corretor| F[Dashboard do Corretor]
-    D -->|Falha| G[Mensagem de Erro]
+    B -- Sim --> G{Tipo de usuário?}
+    G -- Cliente --> H[Área do Cliente]
+    G -- Corretor --> I[Dashboard do Corretor]
 
-    E --> H[Visualizar Imóveis]
-    E --> I[Marcar Interesse]
-    E --> J[Editar Perfil]
+    H --> J[Visualizar imóveis]
+    H --> K[Marcar interesse]
+    H --> L[Ver imóveis salvos]
+    H --> M[Editar perfil]
 
-    F --> K[Gerenciar Imóveis]
-    F --> L[Visualizar Clientes Interessados]
+    I --> N[Gerenciar imóveis]
+    I --> O[Ver clientes interessados]
 
-    H --> B
-    K --> F
-    I --> E
+    F --> P{Credenciais válidas?}
+    P -- Sim --> G
+    P -- Não --> Q[Exibir erro de login]
+    Q --> F
 ```
 
 ## 📌 Conclusão
 
-  O projeto **Imobiliária Prime** aplica conceitos fundamentais de desenvolvimento web com Angular, incluindo **componentização, serviços, guardas de rota e integração com backend simulado**.
-Com diferenciação de perfis (cliente e corretor) e regras de acesso, a aplicação entrega uma experiência próxima de um sistema real de imobiliária.
+O **Imobiliária Prime** demonstra, de forma prática e didática, como construir uma aplicação Angular com múltiplos perfis de usuário, controle de acesso e integração com API.  
+Apesar de usar um backend simulado e autenticação simplificada, o projeto segue boas práticas de arquitetura, segurança e usabilidade — servindo como base sólida para sistemas reais.
