@@ -109,7 +109,7 @@ Desenvolver uma **SPA (Single Page Application)** moderna, responsiva e segura, 
 
 ```mermaid
 %%{init: {"theme": "default"}}%%
-useCaseDiagram
+usecaseDiagram
 actor Visitante
 actor Cliente
 actor Corretor
@@ -127,11 +127,12 @@ Corretor --> (Fazer login)
 Corretor --> (Gerenciar imóveis)
 Corretor --> (Visualizar clientes interessados)
 
-(Visualizar página inicial) .> (Visualizar detalhes de imóvel) : include
-(Cadastrar conta cliente) .> (Fazer login) : include
-```
+(Visualizar página inicial) --> (Visualizar detalhes de imóvel) : <<include>>
+(Cadastrar conta cliente) --> (Fazer login) : <<include>>
 
 ### Diagrama de Classes
+
+```
 
 ```mermaid
 classDiagram
