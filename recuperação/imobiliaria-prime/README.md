@@ -101,9 +101,95 @@ Desenvolver uma **SPA (Single Page Application)** moderna, responsiva e segura, 
     }
   ]
 }
+````
+
+## 📊 Diagramas
+
+### 🔹 Diagrama de Caso de Uso
+
+```mermaid
+%%{init: {"theme": "default"}}%%
+usecaseDiagram
+actor Visitante
+actor Cliente
+actor Corretor
+
+Visitante --> (Visualizar página inicial)
+Visitante --> (Visualizar detalhes de imóvel)
+Visitante --> (Cadastrar conta cliente)
+
+Cliente --> (Fazer login)
+Cliente --> (Marcar interesse em imóvel)
+Cliente --> (Visualizar imóveis salvos)
+Cliente --> (Editar perfil)
+
+Corretor --> (Fazer login)
+Corretor --> (Gerenciar imóveis)
+Corretor --> (Visualizar clientes interessados)
+
+(Visualizar página inicial) --> (Visualizar detalhes de imóvel) : <<include>>
+(Cadastrar conta cliente) --> (Fazer login) : <<include>>
+```
+
+### 🔹 Diagrama de Classes
+
+```mermaid
+classDiagram
+    class Usuario {
+      +int id
+      +string nome
+      +string email
+      +string senha
+      +string tipo  // cliente ou corretor
+    }
+
+    class Imovel {
+      +int id
+      +string titulo
+      +string tipo
+      +string cidade
+      +double preco
+      +string descricao
+      +string imagemUrl
+      +int corretorId
+    }
+
+    class Interesse {
+      +int id
+      +int clienteId
+      +int imovelId
+    }
+
+    Usuario "1" <|-- "N" Imovel : cadastra >
+    Usuario "1" <|-- "N" Interesse : manifesta >
+    Imovel "1" <|-- "N" Interesse : gera >
+```
+
+### 🔹 Fluxo do Sistema (Login e Acesso)
+
+```mermaid
+flowchart TD
+    A[Início] --> B[Visitante acessa sistema]
+    B -->|Cadastrar| C[Criar conta Cliente]
+    B -->|Login| D[Autenticação]
+
+    D -->|Sucesso: Cliente| E[Área do Cliente]
+    D -->|Sucesso: Corretor| F[Dashboard do Corretor]
+    D -->|Falha| G[Mensagem de Erro]
+
+    E --> H[Visualizar Imóveis]
+    E --> I[Marcar Interesse]
+    E --> J[Editar Perfil]
+
+    F --> K[Gerenciar Imóveis]
+    F --> L[Visualizar Clientes Interessados]
+
+    H --> B
+    K --> F
+    I --> E
 ```
 
 ## 📌 Conclusão
 
-O **Imobiliária Prime** demonstra, de forma prática e didática, como construir uma aplicação Angular com múltiplos perfis de usuário, controle de acesso e integração com API.  
+O **Imobiliária Prime** demonstra, de forma prática e didática, como construir uma aplicação Angular com múltiplos perfis de usuário, controle de acesso e integração com API.
 Apesar de usar um backend simulado e autenticação simplificada, o projeto segue boas práticas de arquitetura, segurança e usabilidade — servindo como base sólida para sistemas reais.
