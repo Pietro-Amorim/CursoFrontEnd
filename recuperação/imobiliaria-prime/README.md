@@ -75,7 +75,7 @@ Desenvolver uma **SPA (Single Page Application)** moderna, responsiva e segura, 
     },
     {
       "id": 2,
-      "nome": "Ana Cliente",
+      "nome": "Pietro Cliente",
       "email": "cliente@email.com",
       "senha": "123",
       "tipo": "cliente"
