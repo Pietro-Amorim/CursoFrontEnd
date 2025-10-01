@@ -1,16 +1,15 @@
-# Sistema de Gestão de Manutenção
+# Sistema de Gestão de Manutenção (Formativa)
 
 ## Briefing
 
-### Visão Geral do progeto
-
-- O projeto consiste no desenvolvimento de um Sistema de Gestão de Manutenção (SGM) no formato de uma aplicação web.
+### Visão Geral do Projeto
+O projeto consiste no desenvolvimento de um Sistema de Gestão de Manutenção (SGM) no formato de uma aplicação web.
 
 ## Escopo
 
-- ## Objetivos:
+- ### Objetivos:
 
-- ## Público-Alvo:
+- ### Público-Alvo:
     - Técnicos de Manutenção
     - Gestores de Manutenção
     - Administradores do Sistema
@@ -19,64 +18,69 @@
 
 ## Diagramas (Mermaid, Miro, Draw.io)
 
-1. ### Diagrama de Classe
+1. ### Diagrama de Classes
 
-- Este diagrama modela as principais entidades do sistema:
-    - Usuários (Users/Usuarios) 
-        - Campo:  Adm || User;
-    - Máquinas/Equipamentos(Equipment);
-    - Ordem de Serviço (Service);
+Este Diagrama modela as principais entidades do sistema:
+- Usuários (User/Usuarios);
+    - atributos: id, nome, email, senha, função
+    - métodos: create, read, update, delete, login, logout
+- Máquinas/Equipamentos (Equipment);
+    - atributos: id, modelo, marca, numSerie, status, localizacao
+    - métodos: create, read, update, delete
+- Ordem de Serviço(Service);
+    - atributos: id, titulo, descricao, idEquipamento, idTecnico, tipoManutencao
+    - métodos: create, read, update, delete
 
 ```mermaid
 
 classDiagram
-
-    class Usuario{
-        +String id
-        +String nome
-        +String email
-        +String senha
-        +String funcao
+    class Usuario {
+        +int id
+        +string nome
+        +string email
+        +string senha
+        +string funcao
+        +create()
+        +read()
+        +update()
+        +delete()
         +login()
         +logout()
+    }
+
+    class Equipamento {
+        +int id
+        +string modelo
+        +string marca
+        +string numSerie
+        +string status
+        +string localizacao
         +create()
         +read()
         +update()
         +delete()
     }
 
-    class Equipamento{
-        +String id
-        +String nome
-        +String modelo
-        +String numeroSerie
-        +String localizacao
-        +String status
-        +create()
-        +read()
-        +update()
-        +delete()
-    }
-
-    class OrdemServico{
-        +String id
+    class OrdemDeServico {
+        +int id
         +string titulo
-        +String descricao
-        +String tipoManutencao
-        +String status
-        +String idTecnico
-        +String IdEquipamento
+        +string descricao
+        +int idEquipamento
+        +int idTecnico
+        +string tipoManutencao
         +create()
         +read()
         +update()
         +delete()
     }
 
-    Usuario "1" -- "1+" OrdemServico : "é resposável por"
-    Equipamento "1" -- "1+" OrdemServico : "associado a"
+    Usuario "1" -- "0..*" OrdemDeServico : "responsável por"
+    Equipamento "1" -- "0..*" OrdemDeServico : "associado a"
+
 ```
 
-#### Explicação do Diagrama de Classe
+
+ #### Explicação do Diagrama de Classe
  - Um Usuário (Técnico) por ser responsável por várias Ordens de Servico
  - Um Equipamento por estar associado a várias Ordens de Serviço
 
@@ -96,34 +100,34 @@ classDiagram
 ```mermaid
 graph TD
     subgraph "SGM"
-        uc1([Fazer Login])
-        uc2([Gerenciar Ordens de Serviço - CRUD])
-        uc3([Gerenciar Equipamentos - CRUD])
-        uc4([Gerenciar Usuário])
-        uc5([Acessar o DashBoard])
+        caso1([Fazer Login])
+        caso2([Gerenciar Ordens de Serviço - CRUD])
+        caso3([Gerenciar Equipamentos - CRUD])
+        caso4([Gerenciar Usuário])
+        caso5([Acessar o DashBoard])
     end
 
     Tecnico([Técnico de Manutenção])
     Gestor([Gerente de Manutenção])
     Admin([Administrador do Sistema])
 
-    Tecnico --> uc1 
-    Tecnico --> uc3
-    Tecnico --> uc5
+    Tecnico --> caso1 
+    Tecnico --> caso3
+    Tecnico --> caso5
 
-    Gestor --> uc1
-    Gestor --> uc2
-    Gestor --> uc3
-    Gestor --> uc5
+    Gestor --> caso1
+    Gestor --> caso2
+    Gestor --> caso3
+    Gestor --> caso5
 
-    Admin --> uc1
-    Admin --> uc4
-    Admin --> uc5
+    Admin --> caso1
+    Admin --> caso4
+    Admin --> caso5
 
-    uc2 -.-> uc1
-    uc3 -.-> uc1
-    uc4 -.-> uc1
-    uc5 -.-> uc1
+    caso2 -.-> caso1
+    caso3 -.-> caso1
+    caso4 -.-> caso1
+    caso5 -.-> caso1
 
 ```
 
@@ -148,5 +152,54 @@ graph TD
     E --> F[DashBoard]
     D --> Não --> K[Mensagem de Erro]
     K --> B
-    
+
 ```
+
+--- 
+
+## Análise de Risco
+
+### Matriz de Análise de Risco do Projeto SGM
+
+A tabela abaixo apresenta os riscos identificados no projeto **SGM**, organizados por categoria, junto com a probabilidade, impacto e estratégias de mitigação propostas.
+
+---
+
+### Riscos Técnicos
+______________________________________________________________________________________________________________________________________________________________________________________________________________
+| ID  | Risco                                     | Probabilidade | Impacto | Mitigação                                                                                                                       |
+|-----|-------------------------------------------|---------------|---------|---------------------------------------------------------------------------------------------------------------------------------|
+| 1   | Chave secreta do JWT comprometida         | Média         | Alto    | Utilizar chaves secretas longas e complexas, armazená-las em variáveis de ambiente e implementar política de rotação de chaves. |
+| 2   | Vulnerabilidade de truncamento do Bcrypt  | Baixa         | Alto    | Garantir que a entrada para o hashing de senha nunca exceda 72 bytes e tratar a senha de forma isolada, sem concatenação.       |
+| 3   | Lentidão do sistema com aumento de dados  | Média         | Média   | Otimizar consultas com indexação, implementar paginação e planejar arquitetura para escalabilidade futura.                      |
+| 4   | Código de baixa qualidade com bugs        | Alta          | Média   | Adotar práticas de código limpo, revisões de código (code review) e testes unitários e de integração contínua.                  |
+_______________________________________________________________________________________________________________________________________________________________________________________________________________
+---
+
+### Riscos de Gerenciamento
+__________________________________________________________________________________________________________________________________________________________________________________________
+| ID  | Risco                             | Probabilidade | Impacto | Mitigação                                                                                                           |
+|-----|-----------------------------------|---------------|---------|---------------------------------------------------------------------------------------------------------------------|
+| 5   | Aumento do escopo (Scope Creep)   | Alta          | Média   | Formalizar processo de controle de mudanças e avaliar impacto em prazo/custo antes da aprovação.                    |
+| 6   | Atraso na entrega do projeto      | Alta          | Média   | Utilizar metodologias ágeis, reavaliar cronograma a cada sprint e manter comunicação transparente sobre progresso.  |
+| 7   | Requisitos mal interpretados      | Média         | Alto    | Validar protótipos e wireframes com usuários finais e manter comunicação constante para esclarecimento.             |
+__________________________________________________________________________________________________________________________________________________________________________________________|
+---
+
+### Riscos Organizacionais
+________________________________________________________________________________________________________________________________________________________________________________________________________
+| ID  | Risco                                    | Probabilidade | Impacto | Mitigação                                                                                                                  |
+|-----|------------------------------------------|---------------|---------|----------------------------------------------------------------------------------------------------------------------------|
+| 8   | Resistência dos usuários à nova ferramenta | Média       | Alto    | Envolver usuários-chave desde o início, criar interface amigável (UI/UX) e comunicar benefícios do sistema.                |
+| 9   | Inserção de dados incorretos no sistema  | Média         | Alto    | Implementar validações robustas nos formulários e, se possível, importar/validar dados existentes.                         |
+| 10  | Falta de treinamento para os usuários    | Média         | Média   | Criar manuais de usuário, realizar treinamentos práticos por perfil (técnico, gestor, administrador) e oferecer suporte.   |
+________________________________________________________________________________________________________________________________________________________________________________________________________|
+---
+
+## Prototipagem
+
+https://www.figma.com/design/QPBGLuRHFcyq18rsUQrwn0/Untitled?node-id=0-1&t=8IDLxRn4oddBpDxJ-1
+
+---
+
+## Codificação 
