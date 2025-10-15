@@ -1,38 +1,53 @@
-# Sistema de Gestão de Manutenção (Formativa)
+# 🧰 Sistema de Gestão de Manutenção (Formativa)
 
-## Briefing
+## 📘 Briefing
 
-### Visão Geral do Projeto
-O projeto consiste no desenvolvimento de um Sistema de Gestão de Manutenção (SGM) no formato de uma aplicação web.
+### 🔍 Visão Geral do Projeto
 
-## Escopo
+O projeto consiste no desenvolvimento de um **Sistema de Gestão de Manutenção (SGM)** no formato de uma aplicação web.
 
-- ### Objetivos:
+---
 
-- ### Público-Alvo:
-    - Técnicos de Manutenção
-    - Gestores de Manutenção
-    - Administradores do Sistema
+## 🧭 Escopo
 
-- ### Recursos Tecnológicos:
+### 🎯 Objetivos
 
-## Diagramas (Mermaid, Miro, Draw.io)
+*(Definir aqui os objetivos específicos do sistema, como otimizar processos de manutenção, registrar ocorrências, etc.)*
 
-1. ### Diagrama de Classes
+### 👥 Público-Alvo
 
-Este Diagrama modela as principais entidades do sistema:
-- Usuários (User/Usuarios);
-    - atributos: id, nome, email, senha, função
-    - métodos: create, read, update, delete, login, logout
-- Máquinas/Equipamentos (Equipment);
-    - atributos: id, modelo, marca, numSerie, status, localizacao
-    - métodos: create, read, update, delete
-- Ordem de Serviço(Service);
-    - atributos: id, titulo, descricao, idEquipamento, idTecnico, tipoManutencao
-    - métodos: create, read, update, delete
+* Técnicos de Manutenção
+* Gestores de Manutenção
+* Administradores do Sistema
+
+### 💻 Recursos Tecnológicos
+
+*(Listar tecnologias como Node.js, Express, Angular, MySQL, etc.)*
+
+---
+
+## 🧩 Diagramas (Mermaid, Miro, Draw.io)
+
+### 1️⃣ Diagrama de Classes
+
+Modela as principais entidades do sistema:
+
+* **Usuários (User/Usuarios)**
+
+  * Atributos: id, nome, email, senha, função
+  * Métodos: create, read, update, delete, login, logout
+
+* **Máquinas/Equipamentos (Equipment)**
+
+  * Atributos: id, modelo, marca, numSerie, status, localizacao
+  * Métodos: create, read, update, delete
+
+* **Ordem de Serviço (Service)**
+
+  * Atributos: id, titulo, descricao, idEquipamento, idTecnico, tipoManutencao
+  * Métodos: create, read, update, delete
 
 ```mermaid
-
 classDiagram
     class Usuario {
         +int id
@@ -76,26 +91,32 @@ classDiagram
 
     Usuario "1" -- "0..*" OrdemDeServico : "responsável por"
     Equipamento "1" -- "0..*" OrdemDeServico : "associado a"
-
 ```
 
+**📝 Explicação:**
 
- #### Explicação do Diagrama de Classe
- - Um Usuário (Técnico) por ser responsável por várias Ordens de Servico
- - Um Equipamento por estar associado a várias Ordens de Serviço
+* Um **Usuário (Técnico)** pode ser responsável por várias **Ordens de Serviço**.
+* Um **Equipamento** pode estar associado a várias **Ordens de Serviço**.
 
- 2. ### Diagrama de Caso de Uso
- Ilustrar as interações dos diferentes tipos de usuários (atores) com as funcionalidades do sistema
+---
 
-#### Explicação:
-- Atores: Técnico, Gestor, Admin
+### 2️⃣ Diagrama de Caso de Uso
 
-- Casos de Usos:
-    - Técnico: Gerenciar Ordens de Servico (CRUD) e acessar o DashBoard
-    - Gestor: Gerenciar Ordens de Serviço (CRUD) , Gerenciar Equipamento (CRUD), Acessar o DashBoard
-    -Admin: Gerenciar Usuário, acessar o DashBoard
+Ilustra as interações dos diferentes tipos de usuários (atores) com as funcionalidades do sistema.
 
-    Fazer o Login -> Antes de Qualquer Ação
+#### Atores:
+
+* Técnico
+* Gestor
+* Administrador
+
+#### Casos de Uso:
+
+* Técnico: Gerenciar Ordens de Serviço (CRUD) e acessar o Dashboard
+* Gestor: Gerenciar Ordens de Serviço (CRUD), Gerenciar Equipamento (CRUD), acessar o Dashboard
+* Admin: Gerenciar Usuário e acessar o Dashboard
+
+*(Antes de qualquer ação, o usuário deve fazer login)*
 
 ```mermaid
 graph TD
@@ -128,78 +149,79 @@ graph TD
     caso3 -.-> caso1
     caso4 -.-> caso1
     caso5 -.-> caso1
-
 ```
 
-3. ### Diagram de Fluxo (Login e Acesso ao Dashboard)
-Detalhar o passo a passo que um usuário segue para se autenticar no sistema a acessar o dashboard
+---
+
+### 3️⃣ Diagrama de Fluxo (Login e Acesso ao Dashboard)
+
+Descreve o passo a passo que um usuário segue para se autenticar no sistema e acessar o dashboard.
 
 #### Explicação:
-- O Fluxo começa quando osuário acessa a tela de login
-- Insere as credenciais( email e senha)
-- O sistema verifica se as credenciais são válidas
-    - se sim: gera um JWT (token) => dashboard
-    - se não: mensagem de erro eusuário permanece na tela de l
-    login
+
+* O fluxo começa quando o usuário acessa a tela de login.
+* Ele insere as credenciais (email e senha).
+* O sistema verifica se as credenciais são válidas:
+
+  * ✅ Se **sim** → Gera um **JWT Token** e redireciona para o **Dashboard**
+  * ❌ Se **não** → Exibe mensagem de erro e o usuário permanece na tela de login
 
 ```mermaid
-
 graph TD
-    A[Início] --> B{Acessa a Tela de Login}
+    A[Início] --> B[Acessa a Tela de Login]
     B --> C[Preencher Email e Senha]
-    C --> D{Valida as Credenciais}
-    D --> Sim --> E[Gera um Token JWT]
-    E --> F[DashBoard]
-    D --> Não --> K[Mensagem de Erro]
+    C --> D{Valida as Credenciais?}
+    D -->|Sim| E[Gera um Token JWT]
+    E --> F[Dashboard]
+    D -->|Não| K[Mensagem de Erro]
     K --> B
-
 ```
 
---- 
+---
 
-## Análise de Risco
+## ⚠️ Análise de Risco
 
-### Matriz de Análise de Risco do Projeto SGM
+### 📊 Matriz de Análise de Risco do Projeto SGM
 
-A tabela abaixo apresenta os riscos identificados no projeto **SGM**, organizados por categoria, junto com a probabilidade, impacto e estratégias de mitigação propostas.
+A tabela abaixo apresenta os riscos identificados no projeto **SGM**, organizados por categoria, com probabilidade, impacto e estratégias de mitigação.
 
 ---
 
-### Riscos Técnicos
-______________________________________________________________________________________________________________________________________________________________________________________________________________
-| ID  | Risco                                     | Probabilidade | Impacto | Mitigação                                                                                                                       |
-|-----|-------------------------------------------|---------------|---------|---------------------------------------------------------------------------------------------------------------------------------|
-| 1   | Chave secreta do JWT comprometida         | Média         | Alto    | Utilizar chaves secretas longas e complexas, armazená-las em variáveis de ambiente e implementar política de rotação de chaves. |
-| 2   | Vulnerabilidade de truncamento do Bcrypt  | Baixa         | Alto    | Garantir que a entrada para o hashing de senha nunca exceda 72 bytes e tratar a senha de forma isolada, sem concatenação.       |
-| 3   | Lentidão do sistema com aumento de dados  | Média         | Média   | Otimizar consultas com indexação, implementar paginação e planejar arquitetura para escalabilidade futura.                      |
-| 4   | Código de baixa qualidade com bugs        | Alta          | Média   | Adotar práticas de código limpo, revisões de código (code review) e testes unitários e de integração contínua.                  |
-_______________________________________________________________________________________________________________________________________________________________________________________________________________
----
+### 🔧 Riscos Técnicos
 
-### Riscos de Gerenciamento
-__________________________________________________________________________________________________________________________________________________________________________________________
-| ID  | Risco                             | Probabilidade | Impacto | Mitigação                                                                                                           |
-|-----|-----------------------------------|---------------|---------|---------------------------------------------------------------------------------------------------------------------|
-| 5   | Aumento do escopo (Scope Creep)   | Alta          | Média   | Formalizar processo de controle de mudanças e avaliar impacto em prazo/custo antes da aprovação.                    |
-| 6   | Atraso na entrega do projeto      | Alta          | Média   | Utilizar metodologias ágeis, reavaliar cronograma a cada sprint e manter comunicação transparente sobre progresso.  |
-| 7   | Requisitos mal interpretados      | Média         | Alto    | Validar protótipos e wireframes com usuários finais e manter comunicação constante para esclarecimento.             |
-__________________________________________________________________________________________________________________________________________________________________________________________|
----
-
-### Riscos Organizacionais
-________________________________________________________________________________________________________________________________________________________________________________________________________
-| ID  | Risco                                    | Probabilidade | Impacto | Mitigação                                                                                                                  |
-|-----|------------------------------------------|---------------|---------|----------------------------------------------------------------------------------------------------------------------------|
-| 8   | Resistência dos usuários à nova ferramenta | Média       | Alto    | Envolver usuários-chave desde o início, criar interface amigável (UI/UX) e comunicar benefícios do sistema.                |
-| 9   | Inserção de dados incorretos no sistema  | Média         | Alto    | Implementar validações robustas nos formulários e, se possível, importar/validar dados existentes.                         |
-| 10  | Falta de treinamento para os usuários    | Média         | Média   | Criar manuais de usuário, realizar treinamentos práticos por perfil (técnico, gestor, administrador) e oferecer suporte.   |
-________________________________________________________________________________________________________________________________________________________________________________________________________|
----
-
-## Prototipagem
-
-https://www.figma.com/design/QPBGLuRHFcyq18rsUQrwn0/Untitled?node-id=0-1&t=8IDLxRn4oddBpDxJ-1
+| ID | Risco                                    | Probabilidade | Impacto | Mitigação                                                                                                             |
+| -- | ---------------------------------------- | ------------- | ------- | --------------------------------------------------------------------------------------------------------------------- |
+| 1  | Chave secreta do JWT comprometida        | Média         | Alto    | Utilizar chaves secretas longas e complexas, armazená-las em variáveis de ambiente e implementar política de rotação. |
+| 2  | Vulnerabilidade de truncamento do Bcrypt | Baixa         | Alto    | Garantir que a entrada para o hashing de senha nunca exceda 72 bytes e tratar a senha de forma isolada.               |
+| 3  | Lentidão do sistema com aumento de dados | Média         | Média   | Otimizar consultas com indexação, implementar paginação e planejar escalabilidade.                                    |
+| 4  | Código de baixa qualidade com bugs       | Alta          | Média   | Adotar práticas de código limpo, revisões de código e testes automatizados.                                           |
 
 ---
 
-## Codificação 
+### 🗂️ Riscos de Gerenciamento
+
+| ID | Risco                           | Probabilidade | Impacto | Mitigação                                                                         |
+| -- | ------------------------------- | ------------- | ------- | --------------------------------------------------------------------------------- |
+| 5  | Aumento do escopo (Scope Creep) | Alta          | Média   | Formalizar processo de controle de mudanças e avaliar impacto antes da aprovação. |
+| 6  | Atraso na entrega do projeto    | Alta          | Média   | Utilizar metodologias ágeis e revisar cronograma a cada sprint.                   |
+| 7  | Requisitos mal interpretados    | Média         | Alto    | Validar protótipos com usuários e manter comunicação constante.                   |
+
+---
+
+### 🏢 Riscos Organizacionais
+
+| ID | Risco                                      | Probabilidade | Impacto | Mitigação                                                                          |
+| -- | ------------------------------------------ | ------------- | ------- | ---------------------------------------------------------------------------------- |
+| 8  | Resistência dos usuários à nova ferramenta | Média         | Alto    | Envolver usuários desde o início, criar interface amigável e comunicar benefícios. |
+| 9  | Inserção de dados incorretos no sistema    | Média         | Alto    | Implementar validações robustas e, se possível, importar/validar dados existentes. |
+| 10 | Falta de treinamento para os usuários      | Média         | Média   | Criar manuais de uso, realizar treinamentos práticos e oferecer suporte contínuo.  |
+
+---
+
+## 🧪 Prototipagem
+
+🔗 [Acesse o protótipo no Figma](https://www.figma.com/design/QPBGLuRHFcyq18rsUQrwn0/Untitled?node-id=0-1&t=8IDLxRn4oddBpDxJ-1)
+
+---
+
+## 💻 Codificação
