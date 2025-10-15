@@ -7,6 +7,7 @@
     - MediaQuery
 
  ## Framework (soluções completas para desenvolvimento)
+ 
    ✦ Ângular: 
       - Desenvolvido pela google;
       - MVC;
