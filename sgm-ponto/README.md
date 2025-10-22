@@ -52,6 +52,7 @@ classDiagram
 
 ### 3.1 Diagrama de Casos de Uso
 
+```mermaid
 flowchart TD
     subgraph A [Ator: Funcionário]
         A1[Registrar Ponto]
@@ -69,6 +70,7 @@ flowchart TD
     B --> B1
     B --> B2
     B --> B3
+```
 
 ### 3.2 Diagrama de Fluxo
 
