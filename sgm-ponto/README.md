@@ -52,17 +52,23 @@ classDiagram
 
 ### 3.1 Diagrama de Casos de Uso
 
-```mermaid
-usecaseDiagram
-    actor Funcionário
-    actor Administrador
-
-    Funcionário --> (Registrar Ponto)
-    Funcionário --> (Visualizar Histórico)
-    Administrador --> (Cadastrar Funcionário)
-    Administrador --> (Gerar Relatório de Horas)
-    Administrador --> (Visualizar Histórico dos Funcionários)
-```
+flowchart TD
+    subgraph A [Ator: Funcionário]
+        A1[Registrar Ponto]
+        A2[Visualizar Histórico]
+    end
+    
+    subgraph B [Ator: Administrador]
+        B1[Cadastrar Funcionário]
+        B2[Gerar Relatório de Horas]
+        B3[Visualizar Histórico dos Funcionários]
+    end
+    
+    A --> A1
+    A --> A2
+    B --> B1
+    B --> B2
+    B --> B3
 
 ### 3.2 Diagrama de Fluxo
 
