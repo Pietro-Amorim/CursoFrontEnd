@@ -210,7 +210,7 @@ GET /api/pontos/:funcionario  -> Listar pontos (Funcionário/Admin)
 
 ## 15. Protótipo de Interface
 
-* Link Figma: **[INSERIR LINK AQUI]**
+* Link Figma: **[]**
 
 ---
 

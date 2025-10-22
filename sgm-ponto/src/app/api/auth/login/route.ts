@@ -1,19 +1,30 @@
-import { NextResponse } from "next/server";
-import dbConnect from "@/lib/mongodb";
-import Funcionario from "@/models/Funcionario";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: Request) {
-  await dbConnect();
-  const { email, senha } = await req.json();
+// Usuários de exemplo (você pode conectar com seu DB real depois)
+const usuarios = [
+  { email: "admin@admin.com", senha: "123", role: "admin" },
+  { email: "user@user.com", senha: "123", role: "user" },
+];
 
-  const user = await Funcionario.findOne({ email });
-  if (!user) return NextResponse.json({ error: "Usuário não encontrado" }, { status: 404 });
+export async function POST(req: NextRequest) {
+  try {
+    const { email, senha } = await req.json();
 
-  const isValid = await bcrypt.compare(senha, user.senha);
-  if (!isValid) return NextResponse.json({ error: "Senha incorreta" }, { status: 401 });
+    // Validação
+    const usuario = usuarios.find(u => u.email === email && u.senha === senha);
 
-  const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET!, { expiresIn: "8h" });
-  return NextResponse.json({ token, nome: user.nome, role: user.role });
+    if (!usuario) {
+      return NextResponse.json({ message: "E-mail ou senha inválidos" }, { status: 401 });
+    }
+
+    // Retorna token fake e role (substitua com JWT real se quiser)
+    return NextResponse.json({
+      token: "fake-jwt-token",
+      role: usuario.role,
+    });
+
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ message: "Erro interno no servidor" }, { status: 500 });
+  }
 }

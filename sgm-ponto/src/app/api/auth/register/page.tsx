@@ -1,34 +1,57 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    senha: "",
+    confirmarSenha: ""
+  });
   const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setErro("");
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/login", {
+      // Validar senhas
+      if (formData.senha !== formData.confirmarSenha) {
+        throw new Error("As senhas não coincidem");
+      }
+
+      if (formData.senha.length < 6) {
+        throw new Error("A senha deve ter pelo menos 6 caracteres");
+      }
+
+      const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, senha }),
+        body: JSON.stringify({
+          nome: formData.nome,
+          email: formData.email,
+          senha: formData.senha
+        }),
       });
 
       const data = await res.json();
       
-      if (!res.ok) throw new Error(data.error || "Erro ao fazer login");
+      if (!res.ok) throw new Error(data.error || "Erro ao criar conta");
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userRole", data.role);
-      
-      router.push("/dashboard");
+      // Redirecionar para login com mensagem de sucesso
+      router.push("/login?message=Conta criada com sucesso! Faça login.");
     } catch (err: any) {
       setErro(err.message);
     } finally {
@@ -52,12 +75,44 @@ export default function LoginPage() {
               ContaCerta
             </h1>
             <p style={{ color: 'var(--text-secondary)', fontSize: '18px' }}>
-              Sistema de Controle de Ponto
+              Criar Nova Conta
             </p>
           </div>
 
           <div style={{ width: '100%', maxWidth: '400px' }}>
-            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <form onSubmit={handleRegister} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div>
+                <label htmlFor="nome" style={{ 
+                  display: 'block', 
+                  marginBottom: '8px', 
+                  fontSize: '14px', 
+                  fontWeight: '500',
+                  color: 'var(--text-primary)'
+                }}>
+                  Nome Completo
+                </label>
+                <input
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  placeholder="Seu nome completo"
+                  value={formData.nome}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                  style={{
+                    width: '100%',
+                    padding: '16px',
+                    border: '1px solid var(--button-secondary-border)',
+                    borderRadius: '12px',
+                    fontSize: '16px',
+                    backgroundColor: 'var(--foreground)',
+                    color: 'var(--text-primary)',
+                    transition: 'all 0.2s ease'
+                  }}
+                />
+              </div>
+
               <div>
                 <label htmlFor="email" style={{ 
                   display: 'block', 
@@ -70,10 +125,11 @@ export default function LoginPage() {
                 </label>
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="seu@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   disabled={loading}
                   style={{
@@ -101,10 +157,43 @@ export default function LoginPage() {
                 </label>
                 <input
                   id="senha"
+                  name="senha"
                   type="password"
-                  placeholder="Sua senha"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
+                  placeholder="Mínimo 6 caracteres"
+                  value={formData.senha}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                  style={{
+                    width: '100%',
+                    padding: '16px',
+                    border: '1px solid var(--button-secondary-border)',
+                    borderRadius: '12px',
+                    fontSize: '16px',
+                    backgroundColor: 'var(--foreground)',
+                    color: 'var(--text-primary)',
+                    transition: 'all 0.2s ease'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="confirmarSenha" style={{ 
+                  display: 'block', 
+                  marginBottom: '8px', 
+                  fontSize: '14px', 
+                  fontWeight: '500',
+                  color: 'var(--text-primary)'
+                }}>
+                  Confirmar Senha
+                </label>
+                <input
+                  id="confirmarSenha"
+                  name="confirmarSenha"
+                  type="password"
+                  placeholder="Digite novamente sua senha"
+                  value={formData.confirmarSenha}
+                  onChange={handleChange}
                   required
                   disabled={loading}
                   style={{
@@ -160,10 +249,10 @@ export default function LoginPage() {
                       borderRadius: '50%',
                       animation: 'spin 1s linear infinite'
                     }}></div>
-                    Entrando...
+                    Criando conta...
                   </span>
                 ) : (
-                  'Entrar no sistema'
+                  'Criar Conta'
                 )}
               </button>
             </form>
@@ -172,7 +261,6 @@ export default function LoginPage() {
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
                 padding: '12px 16px',
                 backgroundColor: 'rgba(220, 38, 38, 0.1)',
                 border: '1px solid rgba(220, 38, 38, 0.2)',
@@ -185,18 +273,28 @@ export default function LoginPage() {
                 {erro}
               </div>
             )}
-          </div>
-        </div>
 
-        <div style={{ 
-          textAlign: 'center', 
-          width: '100%',
-          paddingTop: '32px',
-          borderTop: '1px solid var(--button-secondary-border)',
-          color: 'var(--text-secondary)',
-          fontSize: '14px'
-        }}>
-          <p>Bem-vindo ao sistema de ponto</p>
+            <div style={{ 
+              textAlign: 'center', 
+              marginTop: '32px',
+              paddingTop: '24px',
+              borderTop: '1px solid var(--button-secondary-border)'
+            }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
+                Já tem uma conta?{' '}
+                <Link 
+                  href="/login" 
+                  style={{ 
+                    color: '#667eea', 
+                    fontWeight: '500',
+                    textDecoration: 'none'
+                  }}
+                >
+                  Fazer login
+                </Link>
+              </p>
+            </div>
+          </div>
         </div>
 
         <style jsx>{`
