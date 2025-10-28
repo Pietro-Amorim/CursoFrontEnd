@@ -175,10 +175,6 @@ GET /api/pontos/:funcionario  -> Listar pontos (Funcionário/Admin)
 
 ```
 /styles
-  /components
-    header.scss
-    dashboard.scss
-    registro.scss
   global.scss
 ```
 
@@ -218,7 +214,7 @@ GET /api/pontos/:funcionario  -> Listar pontos (Funcionário/Admin)
 
 ## 15. Protótipo de Interface
 
-* Link Figma: **[]**
+* Link Figma: **[https://www.figma.com/design/46LjBCrboa8qodaZNqozUE/Untitled?node-id=0-1&t=nxhuSaG5RHacOHpb-1]**
 
 ---
 
