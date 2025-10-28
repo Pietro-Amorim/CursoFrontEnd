@@ -221,23 +221,34 @@ GET /api/pontos/:funcionario  -> Listar pontos (Funcionário/Admin)
 ## 16. Estrutura de Pastas (Next.ts)
 
 ```
-/src
-  /app
-    /login
-    /dashboard
-    /registro
-    /funcionarios
-  /models
-    funcionario.ts
-    ponto.ts
-  /components
-    Header.tsx
-    Sidebar.tsx
-    PontoForm.tsx
-    HistoricoList.tsx
-  /pages/api
-    /funcionarios
-    /pontos
-  /styles
-    global.scss
+src/
+├── app/
+│   ├── api/
+│   │   ├── auth/
+│   │   │   └── route.ts
+│   │   ├── funcionarios/
+│   │   │   └── route.ts
+│   │   └── pontos/
+│   │       └── route.ts
+│   ├── dashboard/
+│   │   └── page.tsx
+│   ├── login/
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.module.css
+│   └── page.tsx
+├── lib/
+│   ├── dbConnect.ts
+│   ├── mongodb.ts
+│   └── models/
+│       ├── Funcionario.ts
+│       └── Ponto.ts
+├── middleware/
+│   ├── auth.ts
+│   └── role.ts
+└── styles/
+    └── globals.scss
+
 ```
